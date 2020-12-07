@@ -23,6 +23,18 @@ class Farm
     private Barn $barn;
 
     /**
+     * Total milk collected
+     * @var int
+     */
+    private int $milkTotal = 0;
+
+    /**
+     * Total eggs collected
+     * @var int
+     */
+    private int $eggsTotal = 0;
+
+    /**
      * Farm constructor.
      * @param Barn $barn
      */
@@ -43,6 +55,7 @@ class Farm
             '  - Remove animals: "remove"' . PHP_EOL .
             '  - Collect produce: "collect"' . PHP_EOL .
             '  - List all the animals: "list"' . PHP_EOL .
+            '  - Show total produce collected: "total"' . PHP_EOL .
             '  - Exit: "exit"' . PHP_EOL;
     }
 
@@ -53,10 +66,21 @@ class Farm
     public function collect(): string
     {
         $product = $this->barn->collectProduct();
+        $this->milkTotal += $product[Cow::PRODUCE_NAME];
+        $this->eggsTotal += $product[Chicken::PRODUCE_NAME];
         return sprintf(
             'Got %d liters of milk and %d eggs' . PHP_EOL,
             $product[Cow::PRODUCE_NAME],
             $product[Chicken::PRODUCE_NAME]
+        );
+    }
+
+    public function total(): string
+    {
+        return sprintf(
+            'Collected so far: %d liters of milk and %d eggs' . PHP_EOL,
+            $this->milkTotal,
+            $this->eggsTotal
         );
     }
 
