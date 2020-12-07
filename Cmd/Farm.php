@@ -75,6 +75,10 @@ class Farm
         );
     }
 
+    /**
+     * Get total produce collected
+     * @return string
+     */
     public function total(): string
     {
         return sprintf(
