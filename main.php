@@ -4,11 +4,8 @@ include_once('boot.php');
 include 'animals_array.php';
 
 use Cmd\Farm;
-use Objects\Barn;
 
-$barn = new Barn($animals ?? []);
-
-$farm = new Farm($barn);
+$farm = new Farm($animals ?? []);
 
 echo Farm::menu();
 $input = readline('Enter a command: ');

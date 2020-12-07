@@ -36,11 +36,11 @@ class Farm
 
     /**
      * Farm constructor.
-     * @param Barn $barn
+     * @param array $animals
      */
-    public function __construct(Barn $barn)
+    public function __construct(array $animals = [])
     {
-        $this->barn = $barn;
+        $this->barn = new Barn($animals);
     }
 
     /**
